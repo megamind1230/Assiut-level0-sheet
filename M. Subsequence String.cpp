@@ -56,3 +56,58 @@ https://codeforces.com/group/MWSDmqGsZm/contest/219856/problem/M
     cout<<(!flag? "NO": "YES");
 
 }
+/*
+#include<bits/stdc++.h>
+#include<iostream>
+using namespace std;
+
+int main()
+{
+
+#ifndef ONLINE_JUDGE
+    freopen("input.txt",  "r",  stdin);
+    freopen("output.txt", "w", stdout);
+#endif
+    string Hello="hello";
+
+    string Entered;
+    cin>> Entered;
+
+    int cntrForEntered=0,cntrForHello=0;
+
+    int x=0;
+
+    int y=Hello.size(); // 5
+    int t=Entered.size(); //size of the entered string = 5 in this case
+
+    while(true)
+    {
+        if(Entered[cntrForEntered] == Hello[cntrForHello])
+        {
+            cntrForEntered++;
+            cntrForHello++;
+        }
+        else
+        {
+            cntrForEntered++;
+        }
+
+        //-----------------------------------
+
+        if(cntrForHello==y)
+        {
+            x=1;
+            break;
+        }
+        if(cntrForEntered==t)
+            break;
+    }
+    if(x)
+        cout<<"YES";
+    else
+        cout<<"NO";
+
+    return 0;
+}
+
+*/
