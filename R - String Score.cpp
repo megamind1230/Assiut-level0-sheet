@@ -140,3 +140,58 @@ int main()
     
 cout<< points;
 }
+//another sol
+#include<iostream>
+#include<cmath>
+#include<string>
+#include<cstring>
+#include<bits/stdc++.h>
+using namespace std;
+ 
+int main()
+{
+    int long long score = 0 , sz , n;
+    cin>>n;
+    string s;
+    cin.ignore();
+    getline(cin,s);
+    sz = s.size();
+    for(int long i = 0 ; i < sz ; i++){
+        if(s[i] == 'V'){
+            score = score + 5;
+        }
+        else if(s[i] == 'W'){
+            score = score + 2;
+        }
+        else if(s[i] == 'X'){
+            if((i+1) != sz){
+                s[i+1] = '0';
+            }
+            else{break;}
+        }
+        else if(s[i] == 'Y'){
+            if((i+1) != sz){
+                s.resize(sz + 1);
+                sz++;
+                s[sz - 1] = s[i + 1];
+                s[i + 1] = '0';
+            }
+            else{break;}
+        }
+        else if(s[i] == 'Z'){
+            if((i+1) != sz){
+                if(s[i+1] == 'V'){
+                    score /= 5;
+                    s[i+1] = '0';
+                }
+                else if(s[i+1] == 'W'){
+                    score /= 2;
+                    s[i+1] = '0';
+                }
+            }
+            else{break;}
+        }
+    }
+    cout<<score<<endl;
+    return 0;
+}
