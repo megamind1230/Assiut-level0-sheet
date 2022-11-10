@@ -1,4 +1,4 @@
-/*TLE on test 11
+//TLE on test 11
 #include <bits/stdc++.h>
 using namespace std;
 #define sp <<' '<<
@@ -53,14 +53,14 @@ int main()
             }
         case 'Z':
             {
-                //this commented part is wrong because he said just remove when the following is V / W not with any
+//this commented part is wrong because he said just remove when the following is V / W not with any
 //                 if(entered[i+i]=='V')
 //                     {points/=5;}
 //                 else if(entered[i+1] =='W')
 //                     {points /=2;}
 //                 entered.erase( entered.begin()+(1+i), entered.begin()+(2+i) )  ;break;
 //this correction .. but the code still gives TLE on test 11
-                if(entered[i+i]=='V')
+                if(entered[i+1]=='V')
                     {
                     points/=5;
                     entered.erase( entered.begin()+(1+i), entered.begin()+(2+i) )  ;break;
@@ -89,4 +89,4 @@ cout<< points;
 
 
 }
-*/
+
