@@ -5,7 +5,6 @@ using namespace std;
 #define ln <<'\n';
 int main()
 {
-
 #ifndef ONLINE_JUDGE
     freopen("input.txt",  "r",  stdin);
     freopen("output.txt", "w", stdout);
@@ -13,10 +12,8 @@ int main()
 // cout<<"klsdfjsdlf";
     int n, points = 0; cin>>n;
     string entered; cin >> entered;
-
     for (int i = 0; i < entered.size() - 1 ; ++i)
     {
-        // cout<< i <<' ';
         switch(entered[i])
         {
         case 'V':
@@ -30,26 +27,18 @@ int main()
         case 'X':
             {
                 entered.erase( entered.begin()+(1+i), entered.begin()+(2+i) )  ;
-                // cout<< "i" sp i ln
-                // cout<< "points" sp points ln
                 break;
             }
         case 'Y':
             {
                 
                     char temp = entered[i+1];
-                    // cout<< "temp" sp temp ln;
                     for (int j =  i + 1; j <= entered.size() - 2; ++j)
                     {
-                        // cout<< "entered[" sp j sp "] = " sp entered[j] sp ", entered[" sp j+1 sp "]" sp entered[j+1] ln
                         entered[j] = entered[j+1] ;
                     }
-                    // cout<< "entered[" sp (entered.size()-1) sp "]" sp entered[entered.size() - 1] ln;
                     entered[entered.size()-1] = temp;
                     break;
-
-               
-
             }
         case 'Z':
             {
@@ -70,10 +59,7 @@ int main()
                     points /=2;
                     entered.erase( entered.begin()+(1+i), entered.begin()+(2+i) )  ;break;
                     }
-                
-                
             }
-
         }
     }
     switch(entered[entered.size() - 1 ])
@@ -83,10 +69,74 @@ int main()
     case 'W':
         {points+=2; break;}
     }
-
 cout<< points;
-    // cout<< entered;
-
-
 }
 
+//AC
+#include <bits/stdc++.h>
+using namespace std;
+#define sp <<' '<<
+#define ln <<'\n';
+int main()
+{
+
+#ifndef ONLINE_JUDGE
+    freopen("input.txt",  "r",  stdin);
+    freopen("output.txt", "w", stdout);
+#endif
+    int n, points = 0; cin>>n;//useless almost
+    string entered; cin >> entered;
+    for (int i = 0; i < entered.size() ; ++i)
+    {
+        char ch =  entered[i];
+        switch(ch)
+        {
+        case 'V'://add 5
+            {
+                points +=5; break;
+            }
+        case 'W'://add 2
+            {
+                points +=2; break;
+            }
+        case 'X'://remove next
+            {
+                if(i<=entered.size() - 1 - 1)// 'cause of the +1 right below... just not to access what's beyond we need
+                    entered[i + 1] = '0';// next char .. turn it off
+                break;
+            }
+        case 'Y'://move next to end
+            {
+                    if(i<=entered.size() - 1 - 1)
+                    {
+                        entered.push_back(entered[i+1]);
+                        i++; // to skip the next coming 'cause we sent it to the end
+                        // as if we move it to the end ... but increased the entered size by 1
+                    }
+                    break;
+            }
+        case 'Z'://pretty long way // break; here is fine to written or not as this case it the final one
+            {
+                if(i<=entered.size() - 1 - 1)
+                {
+                    if(entered[i+1]=='V')
+                        {
+                            points/=5;
+                            i++;
+                             break;
+                        }
+                    else if(entered[i+1] =='W')
+                        {
+                            points /=2;
+                            i++;// to skip the next coming as if we deleted it already
+                            break;
+                        }
+                }
+                
+            }
+
+        }
+    }
+    
+cout<< points;
+}
