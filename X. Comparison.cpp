@@ -31,6 +31,7 @@ void set_evni()
 }
 int main()
 {
+    https://codeforces.com/group/MWSDmqGsZm/contest/219856/problem/X
 set_evni();
     string input; cin>> input;
     string holder= input;
